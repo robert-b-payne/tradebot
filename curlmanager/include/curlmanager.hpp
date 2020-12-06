@@ -1,3 +1,5 @@
+#pragma once
+
 #include <curl/curl.h>
 #include <iostream>
 
@@ -5,6 +7,7 @@ class CurlManager
 {
 public:
 	CurlManager();
+	~CurlManager();
 	bool getRequest(std::string url);
 private:
 	CURL *curl_;

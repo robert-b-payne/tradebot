@@ -2,21 +2,26 @@
 
 CurlManager::CurlManager()
 {
-	std::cout << "CurlManager::CurlManager" << std::endl;
 	curl_ = curl_easy_init();
+}
+
+CurlManager::~CurlManager()
+{
+	curl_easy_cleanup(curl_);;
 }
 
 bool CurlManager::getRequest(std::string url)
 {
+	std::cout << "CurlManager::getRequest\t" << url <<  std::endl;
 	if(!curl_)
 	{	
 		std::cout << "CurlManager failed to initialize!";
 		return false;
-	}	
-	
+	}
 
    	//curl_easy_setopt(curl, CURLOPT_URL, "https://example.com");
-   	curl_easy_setopt(curl_, CURLOPT_URL, "http://api.open-notify.org/astros.json");
+   	// curl_easy_setopt(curl_, CURLOPT_URL, "http://api.open-notify.org/astros.json");
+   	curl_easy_setopt(curl_, CURLOPT_URL, url.c_str());
    	curl_easy_setopt(curl_, CURLOPT_CUSTOMREQUEST, "GET");
    	/* example.com is redirected, so we tell libcurl to follow redirection */
    	curl_easy_setopt(curl_, CURLOPT_FOLLOWLOCATION, 1L);
@@ -29,9 +34,8 @@ bool CurlManager::getRequest(std::string url)
            curl_easy_strerror(res_));
 
    	/* always cleanup */
-   	curl_easy_cleanup(curl_);
+   	// curl_easy_cleanup(curl_);
     printf("\n");
-
 
 	return true;
 }
