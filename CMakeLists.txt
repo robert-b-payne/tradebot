@@ -3,6 +3,7 @@ project(tradebot)
 
 add_subdirectory(curlmanager)
 add_subdirectory(exchanges)
+add_subdirectory(timer)
 
 add_executable(tradebot
     ${CMAKE_CURRENT_LIST_DIR}/main.cpp
@@ -17,4 +18,6 @@ target_link_libraries(tradebot
     curl
     curlmanager
     exchange
+    timer
+    pthread
 )
