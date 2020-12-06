@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.13.4)
 project(tradebot)
 
+include_directories(${PROJECT_SOURCE_DIR}/external)
+
 add_subdirectory(curlmanager)
 add_subdirectory(exchanges)
 add_subdirectory(timer)
