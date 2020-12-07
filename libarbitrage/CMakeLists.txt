@@ -1,13 +1,12 @@
 add_library(
-    libtradebot
-    src/tradebot.cpp
+    libarbitrage
+    src/arbitrage_pair.cpp
 )
 
 target_include_directories(
-    libtradebot 
+    libarbitrage 
     PRIVATE ${PROJECT_SOURCE_DIR}/common_include
     PUBLIC include
-    PRIVATE ${CMAKE_SOURCE_DIR}/curlmanager/include
     PRIVATE ${CMAKE_SOURCE_DIR}/exchanges/include
-    PRIVATE ${CMAKE_SOURCE_DIR}/libarbitrage/include
+    PRIVATE ${CMAKE_SOURCE_DIR}/curlmanager/include
 )

@@ -12,6 +12,8 @@ int main()
 
 	TradeBot tradebot;
 
+	tradebot.enableArbitrage();
+
 	tradebot.addExchange(std::make_unique<Binance>());
 	tradebot.addExchange(std::make_unique<Bittrex>());
 

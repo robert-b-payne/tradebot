@@ -58,6 +58,12 @@ void TradeBot::compareETHBTC()
     std::cout << "Smallest ETHBTC price:\t[" <<  smallest->getExchangeName() << ", " << smallest->getPriceETHBTC() << "]" << std::endl;
     std::cout << "Largest ETHBTC price:\t[" <<  largest->getExchangeName() << ", " << largest->getPriceETHBTC() << "]" << std::endl;
     std::cout << largest->getExchangeName() << " is " << largest->getPriceETHBTC() / smallest->getPriceETHBTC() - 1 << "% larger than " << smallest->getExchangeName() << std::endl;
+    if(arbitrageMode_)
+    {
+        arbitragePair.setSmaller(smallest);
+        arbitragePair.setLarger(largest);
+        arbitragePair.executeTrade();
+    }
 }
 
 void TradeBot::run()
@@ -77,4 +83,14 @@ void TradeBot::run()
 
 	std::thread t(callback);
 	t.join();
+}
+
+void TradeBot::enableArbitrage()
+{
+    arbitrageMode_ = true;
+}
+
+void TradeBot::disableArbitrage()
+{
+    arbitrageMode_ = false;
 }

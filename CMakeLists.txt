@@ -9,6 +9,7 @@ add_subdirectory(curlmanager)
 add_subdirectory(exchanges)
 add_subdirectory(timer)
 add_subdirectory(libtradebot)
+add_subdirectory(libarbitrage)
 
 add_executable(tradebot
     ${CMAKE_CURRENT_LIST_DIR}/main.cpp
@@ -21,9 +22,10 @@ target_include_directories(
 
 target_link_libraries(tradebot
     curl
+    pthread
     curlmanager
     exchange
     timer
-    pthread
     libtradebot
+    libarbitrage
 )
