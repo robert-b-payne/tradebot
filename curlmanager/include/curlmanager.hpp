@@ -8,7 +8,7 @@ class CurlManager
 public:
 	CurlManager();
 	~CurlManager();
-	bool getRequest(std::string url);
+	std::string getRequest(std::string url);
 private:
 	CURL *curl_;
 	CURLcode res_;
