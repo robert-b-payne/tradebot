@@ -57,7 +57,7 @@ void TradeBot::compareETHBTC()
     }
     std::cout << "Smallest ETHBTC price:\t[" <<  smallest->getExchangeName() << ", " << smallest->getPriceETHBTC() << "]" << std::endl;
     std::cout << "Largest ETHBTC price:\t[" <<  largest->getExchangeName() << ", " << largest->getPriceETHBTC() << "]" << std::endl;
-    std::cout << largest->getExchangeName() << " is " << largest->getPriceETHBTC() / smallest->getPriceETHBTC() - 1 << "% larger than " << smallest->getExchangeName() << std::endl;
+    std::cout << largest->getExchangeName() << " is " << (largest->getPriceETHBTC() / smallest->getPriceETHBTC() - 1) * 100 << "% larger than " << smallest->getExchangeName() << std::endl;
     if(arbitrageMode_)
     {
         arbitragePair.setSmaller(smallest);
