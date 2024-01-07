@@ -17,7 +17,6 @@ void Bittrex::fetchPriceList()
 float Bittrex::parseETHBTC()
 {
     float price;
-    // std::cout << "Binance::parseETHBTC" << std::endl;
     rapidjson::Document d;
     d.Parse(priceList_.c_str());
     if(!d.IsObject())
@@ -52,7 +51,6 @@ float Bittrex::parseETHBTC()
             if(priceVal != element.MemberEnd() && priceVal->value.IsString())
             {
                 price = std::atof(priceVal->value.GetString());
-                // std::cout << "Bittrex ETHBTC Price: " << price << std::endl;
             }
             break;
         }

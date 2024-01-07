@@ -17,7 +17,6 @@ void Binance::fetchPriceList()
 float Binance::parseETHBTC()
 {
     float price;
-    // std::cout << "Binance::parseETHBTC" << std::endl;
     rapidjson::Document d;
     d.Parse(priceList_.c_str());
     if(!d.IsObject())
@@ -53,7 +52,6 @@ float Binance::parseETHBTC()
             {
                 
                 price = std::atof(priceVal->value.GetString());
-                // std::cout << "Binance ETHBTC Price: " << price << std::endl;
             }
             break;
         }
